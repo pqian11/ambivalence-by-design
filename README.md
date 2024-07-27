@@ -24,7 +24,6 @@ non-compliance), taken from [Bridgers et al. (2023).](https://osf.io/preprints/p
 
 ```
 python src/plot_model_human_comparison_trouble.py
-
 ```
 
 Plot the comparison between model predictions and people's judgment of how much a
