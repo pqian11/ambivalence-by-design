@@ -1,3 +1,4 @@
+from model import *
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
@@ -5,7 +6,6 @@ from matplotlib.lines import Line2D
 import pandas as pd
 import json
 import scipy.stats
-from model import *
 matplotlib.rcParams['font.family'] = "arial"
 
 

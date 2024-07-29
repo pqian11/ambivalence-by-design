@@ -1,3 +1,4 @@
+from model import *
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
@@ -13,10 +14,11 @@ df = pd.read_csv('data/{}'.format(fname))
 stories = list(set(df['story']))
 power_relations = ['DOWN', 'EQUAL', 'UP']
 behaviors = ['Comply', 'Loophole', 'NonComply']
+actions = ['compliance', 'loophole', 'noncompliance']
 
-stories = list(set(df['story']))
-power_relations = list(set(df['power_relation']))
-behaviors = ['Comply','Loophole','NonComply']
+# stories = list(set(df['story']))
+# power_relations = list(set(df['power_relation']))
+# behaviors = ['Comply','Loophole','NonComply']
 
 funny_data = {}
 
@@ -53,7 +55,7 @@ fig, axes = plt.subplots(1, 2, figsize=(7,3.5))
 plt.subplots_adjust(wspace=0.3)
 
 ax = axes[0]
-model_ys = [0.0989,0.899,0.0989] # Distinctiveness measure for Comply, Loophole, and NonComply based on the model
+model_ys = [calc_strength_of_humor_as_distinctiveness_support(action, meaning_certainty=0.9, prosocial_prior_prob=0.85) for action in actions] # Distinctiveness measure for Comply, Loophole, and NonComply based on the model
 
 for j, behavior in enumerate(behaviors):
     ax.bar(j, model_ys[j], width=0.65, edgecolor=a_colors[j], facecolor='w', hatch='///')

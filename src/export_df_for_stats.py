@@ -1,10 +1,6 @@
 import pandas as pd
 import numpy as np
 import json
-import matplotlib.pyplot as plt
-import matplotlib
-import scipy.stats
-matplotlib.rcParams['font.family'] = "arial"
 
 
 fname = 'study4_loophole_prediction_stories.csv'
@@ -217,7 +213,7 @@ for _, row in df.iterrows():
         elif response == 'did not understand at all':
             response = 'didn\'t understand at all'
             
-        score = option2score[response]
+        score = understanding_measure_option2score[response]
         measure_type = 'understanding'
     
     study3_df_rows_all.append([subject_id, story,  power_relation, behavior, measure_type, response.title(), score+1])

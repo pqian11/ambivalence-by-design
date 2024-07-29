@@ -1,3 +1,4 @@
+from model import *
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
@@ -13,6 +14,7 @@ df = pd.read_csv('data/{}'.format(fname))
 stories = list(set(df['story']))
 power_relations = ['DOWN', 'EQUAL', 'UP']
 behaviors = ['Comply', 'Loophole', 'NonComply']
+actions = ['compliance', 'loophole', 'noncompliance']  # Another way of referring to the three types of behaviors 
 
 
 # Build data dictionary
@@ -51,7 +53,8 @@ plt.subplots_adjust(wspace=0.3)
 
 # Plot model predictions
 ax = axes[0]
-model_noncooperative_intent_probs = dict(zip(behaviors, [0.01557, 0.348, 0.463]))
+model_noncooperative_intent_probs = dict(zip(behaviors, 
+    [infer_noncooperative_intent_of_L0(action, meaning_certainty=0.9, prosocial_prior_prob=0.85) for action in actions]))
 mean_noncomply_trouble_rating = np.mean([[np.mean(data['NonComply'][power_relation][story]) for power_relation in power_relations] for story in stories])
 trouble_scale = mean_noncomply_trouble_rating/model_noncooperative_intent_probs['NonComply']
 

@@ -1,3 +1,4 @@
+from model import *
 import pandas as pd
 import numpy as np
 import matplotlib
@@ -33,21 +34,11 @@ for _, row in df.iterrows():
     story = row['story']
     condition = row['condition']
     power_relation, behavior = condition.split('_')
-    
-    response_lower = response.lower()
+    measure_type = row['measure_type']
+    response_num = row['response_num']
 
-    if response_lower.endswith('funny') or response_lower.endswith('trouble'):
-        continue
-
-    cut = 2 if response.startswith('Yes') or response.startswith('No') else 1
-    response = ' '.join(response.split()[cut:])
-    
-    # Normalize typo or stylistic variant in the wording of the options
-    if response == 'may have undertstood':
-        response = 'may have understood'
-    elif response == 'did not understand at all':
-        response = 'didn\'t understand at all'
-    data[story][behavior].append(option2score[response])
+    if measure_type == 'understanding':
+        data[story][behavior].append(response_num)
 
 
 a_colors = ['#66A182', 'orange', "red"]  # Color coding for each action type
@@ -58,7 +49,7 @@ plt.subplots_adjust(wspace=0.3)
 
 # Plot model output
 ax = axes[0]
-model_ys = [0.9364973690286945, 0.7775219601747154, 0.8938055878053994]  # Inference output from the model
+model_ys = [infer_understanding_of_L0(action, meaning_certainty=0.9, prosocial_prior_prob=0.85) for action in ['compliance', 'loophole', 'noncompliance']]
 
 for j, behavior in enumerate(behaviors):
     ax.bar(j, model_ys[j], width=0.65, edgecolor=a_colors[j], facecolor='w', hatch='///')
