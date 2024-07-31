@@ -17,6 +17,7 @@ print('Data from {} participants are included in the analysis.'.format(len(set(d
 condition_dict = json.load(open('data/stimuli_info/loophole_prediction_condition_dict.json', 'r'))
 stories = condition_dict['stories']
 behaviors = ['Comply', 'Loophole', 'NonComply']
+actions = ['compliance', 'loophole', 'noncompliance']
 power_relations = ['DOWN', 'EQUAL', 'UP']
 options = ["didn't understand at all", 'may not have understood', 'may have understood', 'completely understood']
 
@@ -44,7 +45,7 @@ for _, row in df.iterrows():
 a_colors = ['#66A182', 'orange', "red"]  # Color coding for each action type
 np.random.seed(11)
 
-fig, axes = plt.subplots(1, 2, figsize=(7,3.5))
+fig, axes = plt.subplots(1, 2, figsize=(7.8,3.5))
 plt.subplots_adjust(wspace=0.3)
 
 # Plot model output
@@ -56,7 +57,7 @@ for j, behavior in enumerate(behaviors):
 
 ax.set_ylabel('P(m=intended)')
 ax.set_xticks(np.arange(len(behaviors)))
-ax.set_xticklabels(behaviors)
+ax.set_xticklabels([action.title() for action in actions])
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
 ax.set_ylim(0, 1.03)
@@ -76,7 +77,7 @@ ax.set_ylim(0, 3.09)
 # ax.set_ylabel('How much did the listener understand?')
 ax.set_ylabel('Degree of understanding')
 ax.set_xticks(np.arange(len(behaviors)))
-ax.set_xticklabels(behaviors)
+ax.set_xticklabels([action.title() for action in actions])
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
 ax.set_title('People')

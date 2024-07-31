@@ -51,7 +51,7 @@ a_colors = ['#66A182', 'orange', "red"]
     
 np.random.seed(11)
 
-fig, axes = plt.subplots(1, 2, figsize=(7,3.5))
+fig, axes = plt.subplots(1, 2, figsize=(7.8,3.5))
 plt.subplots_adjust(wspace=0.3)
 
 ax = axes[0]
@@ -62,7 +62,7 @@ for j, behavior in enumerate(behaviors):
 
 ax.set_ylabel('Distinctive support\nfor ambivalent social intent')
 ax.set_xticks(np.arange(len(behaviors)))
-ax.set_xticklabels(behaviors)
+ax.set_xticklabels([action.title() for action in actions])
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
 ax.set_ylim(0,1.5)
@@ -84,7 +84,7 @@ ax.set_title('People')
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
 ax.set_xticks(np.arange(3))
-ax.set_xticklabels(behaviors)
+ax.set_xticklabels([action.title() for action in actions])
 plt.ylabel('Funny rating')
 plt.savefig('fig/loophole_eval_funny_model_human_comparison.pdf', bbox_inches='tight')
 plt.show()
