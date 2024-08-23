@@ -478,7 +478,7 @@ def plot_a_prob_pattern_robusteness_analysis_for_rho_alpha(savepath=None):
     inset_fig_params_all = [
         {'axes_params':[0.63, 0.74, 0.1, 0.1], 'rho':0.9, 'alpha':1.4, 'xytext':[0.8, 1.6], 'marker':'^'},
         {'axes_params':[0.36, 0.74, 0.1, 0.1], 'rho':0.34, 'alpha':1.56, 'xytext':[0, 1.6], 'marker':'*'},
-        {'axes_params':[0.2, 0.24, 0.1, 0.1], 'rho':-0.6, 'alpha':0.1, 'xytext':[-0.6, 0.1], 'marker':'^'},
+        {'axes_params':[0.2, 0.24, 0.1, 0.1], 'rho':-0.6, 'alpha':0.1, 'xytext':[-0.6, 0.25], 'marker':'^'},
         {'axes_params':[0.32, 0.42, 0.1, 0.1], 'rho':0.4, 'alpha':1, 'xytext':[0, 0.9], 'marker':'o'},
     ]
 
@@ -559,7 +559,7 @@ def plot_a_prob_pattern_robusteness_analysis_for_meaning_certainty_prosocial_pro
         {'axes_params':[0.25, 0.55, 0.1, 0.1], 'meaning_certainty':0.75, 'prosocial_prior_prob':0.5, 'xytext':[0.68, 0.6], 'marker':'o'},
         {'axes_params':[0.4, 0.75, 0.1, 0.1], 'meaning_certainty':0.9, 'prosocial_prior_prob':0.85, 'xytext':[0.8, 0.92], 'marker':'*'},
         {'axes_params':[0.5, 0.15, 0.1, 0.1], 'meaning_certainty':0.95, 'prosocial_prior_prob':0.25, 'xytext':[0.88, 0.15], 'marker':'^'},
-        {'axes_params':[0.2, 0.25, 0.1, 0.1], 'meaning_certainty':0.6, 'prosocial_prior_prob':0.05, 'xytext':[0.6, 0.15], 'marker':'o'},
+        {'axes_params':[0.2, 0.25, 0.1, 0.1], 'meaning_certainty':0.6, 'prosocial_prior_prob':0.05, 'xytext':[0.6, 0.15], 'marker':'^'},
     ]
 
     for inset_fig_params in inset_fig_params_all:
